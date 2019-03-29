@@ -3,7 +3,7 @@ class BubbleSort {
     public $vetor = array();
 
     function __construct() {
-        for($z = 0; $z < 5; $z++){
+        for($z = 0; $z < 5; $z++) {
             $this->vetor[$z] = rand(0, 100);  	 
         }
     }
