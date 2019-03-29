@@ -1,3 +1,4 @@
+<?php
 class ShellSort {
 
      function __construct() {
@@ -35,3 +36,4 @@ var_dump($a->printVetor());
 
 $a->ordenar();
 print_r($a->printVetor());
+?>
