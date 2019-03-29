@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
     class ShellSort{
+=======
+class ShellSort {
+>>>>>>> bbc042cedc6fcd69336aabeaf48ee38f7a85ee08
 
         function __construct() {
             for($z = 0; $z < 5; $z++) {
@@ -30,6 +34,11 @@
     $a = new ShellSort();
     print_r($a->printVetor());
 
+<<<<<<< HEAD
     $a->ordenar();
     print_r($a->printVetor());
+=======
+$a->ordenar();
+print_r($a->printVetor());
+>>>>>>> bbc042cedc6fcd69336aabeaf48ee38f7a85ee08
 ?>

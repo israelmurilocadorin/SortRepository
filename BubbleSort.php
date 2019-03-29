@@ -1,3 +1,4 @@
+<?php
 class BubbleSort {
 
     public $vetor = array();
@@ -31,3 +32,4 @@ var_dump($a->printVetor());
 
 $a->ordenar();
 print_r($a->printVetor());
+?>
