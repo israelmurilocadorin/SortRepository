@@ -1,4 +1,4 @@
-class shellSort {
+class ShellSort {
 
      function __construct() {
         for($z = 0; $z < 5; $z++) {
