@@ -1,3 +1,6 @@
 <?php
-   echo "ainda não implementado;"
+  abstract class AbstractSortStrategy
+  {
+     
+  }
 ?>
