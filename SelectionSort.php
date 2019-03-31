@@ -6,7 +6,7 @@ class SelectionSort{
         
     }
 
-    public function getArray(){
+    public function getArray() {
         return $this->a;
     }
         
@@ -14,12 +14,12 @@ class SelectionSort{
         array_push($this->a,$value);
     }
 
-    public function ordenar(){
+    public function ordenar() {
         for($ext=0; $ext<sizeof($this->a)-1;$ext++) // loop externo
         {
             $min = $ext; 
             for($in=$ext+1; $in<sizeof($this->a); $in++){
-                if ($this->a[$in] < $this->a[$min]){
+                if ($this->a[$in] < $this->a[$min]) {
                     $min = $in;    
                 }
             } 

@@ -1,35 +1,39 @@
 <?php
-    class BubbleSort {
+
+class QuickSort {
 
     public $vetor = array();
 
-        function __construct() {
-            for($z = 0; $z < 5; $z++) {
-                $this->vetor[$z] = rand(0, 100);  	 
-            }
-        }
-
-        public function printVetor() {
-            return $this->vetor;
-        }
-
-        public function ordenar() {
-            for($cont = 0; $cont < 5; $cont ++) {
-                for($cont2 = 0; $cont2 < 4; $cont2++) {
-                    if($this->vetor[$cont2 + 1] <= $this->vetor[$cont2]) {
-                        $aux = $this->vetor[$cont2];
-                        $this->vetor[$cont2] = $this->vetor[$cont2 + 1];
-                        $this->vetor[$cont2 + 1] = $aux;
-                    }                    
-                }
-                $lista[$cont1] = $aux;
-            }
+    function __construct() {
+        for($z = 0; $z < 5; $z++) {
+            $this->vetor[$z] = rand(0, 100);  	 
         }
     }
+    public function printVetor() {
+        return $this->vetor;
+    }
 
-    $a = new BubbleSort();
-    var_dump($a->printVetor());
+    function simple_quick_sort($this->vetor) {
+        if(count($this->vetor) <= 1) {
+            return $this->vetor;
+        } else {
+            $pivot = $this->vetor[0];
+            $left = array();
+            $right = array();
+            for($i = 1; $i < count($this->vetor); $i++) {
+                if($this->vetor[$i] < $pivot) {
+                    $left[] = $arr[$i];
+                } else {
+                    $right[] = $this->vetor[$i];
+                }
+            }
+            return array_merge(simple_quick_sort($left), array($pivot), simple_quick_sort($right));
+        }
+    }
+}
+$unsorted = array(5,3,8,6,2,7);
+echo implode(",",$unsorted)." @unsorted<br>";
+$sorted = simple_quick_sort($unsorted);
+echo implode(",",$sorted)." @sorted<br>";
 
-    $a->ordenar();
-    print_r($a->printVetor());
 ?>
