@@ -1,17 +1,9 @@
 <?php
-    class SelectionSortStrategy{
-        public $a = array();
+   include('AbstractSortStrategy.php');
+    class SelectionSortStrategy extends AbstractSortStrategy{
 
-        function __construct($a) {
-            $this->a = $a;
-        }
-
-        public function getArray(){
-            return $this->a;
-        }
-            
-        public function insert($value) {
-            array_push($this->a,$value);
+        function __construct($array) {
+            parent::__construct($array);
         }
 
         public function ordenar(){
@@ -23,20 +15,21 @@
                         $min = $in;    
                     }
                 } 
-            $this->swap($ext, $min);
+                $this->troca($ext, $min);
             }
         }	
-
-        public function swap($one,$two) {
-            $temp  = $this->a[$one];
-            $this->a[$one] = $this->a[$two];
-            $this->a[$two] = $temp;
-        }	  
     }
-    //--main--//
-    $b=array(1,42,2,5);
-    $a = new SelectionSortStrategy($b);
-    print_r($a->getArray());
-    $a->ordenar();
-    print_r($a->getArray());
+
+    $a = array();
+    for($i = 0;$i < 10;$i++){
+        array_push($a,$i);
+        shuffle($a);
+    }
+
+    $b = new SelectionSortStrategy($a);
+    $b->tela();
+    $b->ordenar();
+    echo "\n";
+    $b->tela();
+
 ?>
