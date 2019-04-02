@@ -1,6 +1,6 @@
 <?php      
     include('AbstractSortStrategy.php');
-    class BubbleSortStrategy extends AbstractSortStrategy{
+    class extends AbstractSortStrategy{
         
         function __construct($array)
         {   
@@ -10,18 +10,9 @@
         public function ordenar()
         {    
         
-            $data = $this->getElementos();
-            $tamanho = sizeof($data);
-            $percorrerAteP = $tamanho-1;
-
-            for ($aux = 0; $aux < $tamanho; $aux++) {
-                for($aux2 = 0; $aux2 < $percorrerAteP ; $aux2++) {
-                    if($data[$aux2] > $data [$aux2+1]) {
-                        $this->troca($aux2,$aux2+1);
-                    }
-                }
-            }
-
+            $vetor= $this->getElementos();
+           
+            $this->setElementos($vetor);
         }
     }
 

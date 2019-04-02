@@ -1,40 +1,46 @@
-<?php
-    class BubbleSortStrategy {
-        public $vetor = array();
-
-        function __construct()
-        {
-            for($z = 0; $z < 5; $z++)
-            {
-                $this->vetor[$z] = rand(0, 100);  	 
-            }
-        }
+<?php      
+    include('AbstractSortStrategy.php');
+    class BubbleSortStrategy extends AbstractSortStrategy{
         
-        public function printVetor()
-        {
-            return $this->vetor;
+        function __construct($array)
+        {   
+            parent::__construct($array);
         }
 
         public function ordenar()
-        {
-            for($cont = 0; $cont < 5; $cont ++)
+        {    
+        
+            $vetor= $this->getElementos();
+            $tamanho = sizeof($vetor);
+            $percorrerAteP = $tamanho-1;
+            
+            for($cont = 0; $cont < $tamanho; $cont ++)
             {
-                for($cont2 = 0; $cont2 < 4; $cont2++)
+                for($cont2 = 0; $cont2 < $percorrerAteP; $cont2++)
                 {
-                    if($this->vetor[$cont2 + 1] <= $this->vetor[$cont2])
+                    if($vetor[$cont2 + 1] <= $vetor[$cont2])
                     {
-                        $aux = $this->vetor[$cont2];
-                        $this->vetor[$cont2] = $this->vetor[$cont2 + 1];
-                        $this->vetor[$cont2 + 1] = $aux;
+                        $aux = $vetor[$cont2];
+                        $vetor[$cont2] = $vetor[$cont2 + 1];
+                        $vetor[$cont2 + 1] = $aux;
                     }                    
                 }
                 $lista[$cont] = $aux;
             }
+            $this->setElementos($vetor);
         }
     }
 
-    $a = new BubbleSortStrategy();
-    print_r($a->printVetor());
-    $a->ordenar();
-    print_r($a->printVetor());
+    $a = array();
+    for($i = 0;$i <10;$i++){
+        array_push($a,$i);
+        shuffle($a);
+    }
+    $b = new BubbleSortStrategy($a);
+    echo "\n";
+    $b->tela();
+    $b->ordenar();
+    echo "\n";
+    $b->tela();
+
 ?>
