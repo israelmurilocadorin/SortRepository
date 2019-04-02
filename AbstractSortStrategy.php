@@ -18,9 +18,9 @@
     }
 
     public function troca($one,$two) {
-      $temp  = $this->getElementos()[$one];
-      $this->getElementos()[$one] = $this->getElementos()[$two];
-      $this->getElementos()[$two] = $temp;
+      $temp  = $this->a[$one];
+      $this->a[$one] = $this->a[$two];
+      $this->a[$two] = $temp;
     }
 
     public function tela() {
