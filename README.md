@@ -3,10 +3,10 @@
 Métodos de ordenação da disciplina estrutura de dados
 
 **BubbleSortStrategy  -Implementar Teste  
-HeapSortStrategy  
+HeapSortStrategy      -Implementar Teste
 InsertionSortStrategy -Implementar Teste 
-MergeSortStrategy  
-QuickSortStrategy  
+MergeSortStrategy     -Implementar Teste
+QuickSortStrategy     -Implementar Teste
 SelectionSortStrategy -Implementar Teste 
 ShellSortStrategy     -Implementar Teste**  
 
