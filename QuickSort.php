@@ -15,7 +15,7 @@ function QuickSort($array) {
             $right[]= $array[$i];
         }
     }
-    return array_merge( QuickSort($left), array($pivot), QuickSort($right) );
+    return array_merge(QuickSort($left), array($pivot), QuickSort($right));
 }
 $arr = array(3,5,1,2,8,7,6,9,4);
 echo implode(',', QuickSort($arr));
