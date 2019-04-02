@@ -1,6 +1,6 @@
 <?php      
     include('AbstractSortStrategy.php');
-    class extends AbstractSortStrategy{
+    class InsertionSortStrategy extends AbstractSortStrategy{
         
         function __construct($array)
         {   
@@ -11,7 +11,18 @@
         {    
         
             $vetor= $this->getElementos();
-           
+            for($i=1; $i < sizeof($vetor); $i++){
+                $aux = $vetor[$i];
+                $j = $i - 1;
+      
+                while (($j >= 0) && ($aux < $vetor[$j]))
+                {
+                  $vetor[$j + 1] = $vetor[$j];
+                  $j--;
+                }
+                
+                $vetor[$j+1] = $aux;
+              }
             $this->setElementos($vetor);
         }
     }
@@ -21,7 +32,7 @@
         array_push($a,$i);
         shuffle($a);
     }
-    $b = new BubbleSortStrategy($a);
+    $b = new InsertionSortStrategy($a);
     echo "\n";
     $b->tela();
     $b->ordenar();
