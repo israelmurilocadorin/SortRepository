@@ -8,7 +8,7 @@ InsertionSortStrategy
 MergeSortStrategy  
 QuickSortStrategy  
 SelectionSortStrategy  
-ShellSortStrategy**  
+ShellSortStrategy - Implementar Teste**  
 
 Alunos :
 * Dayan Orlando de Freitas

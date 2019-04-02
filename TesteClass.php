@@ -1,6 +1,6 @@
 <?php      
     include('AbstractSortStrategy.php');
-    class ShellSortStrategy extends AbstractSortStrategy{
+    class BubbleSortStrategy extends AbstractSortStrategy{
         
         function __construct($array)
         {   
@@ -9,29 +9,20 @@
 
         public function ordenar()
         {    
-            $array =$this->a;
-            $x = round(sizeof($array) / 2);
-            var_dump($x);
-            while($x > 0)
-            {
-                for($i = $x; $i<sizeof($array); $i++)
-                {
-                    $temp = $array[$i];
-                    $j = $i;                    while($j >= $x && $array[$j-$x] > $temp)
+        
+            $data = $this->getElementos();
+            $tamanho = sizeof($data);
+            $percorrerAteP = $tamanho-1;
 
-                    while($j >= $x && $array[$j-$x] > $temp)
-                    {
-                        $array[$j] = $array[$j - $x];
-                        $j -= $x;
+            for ($aux = 0; $aux < $tamanho; $aux++) {
+                for($aux2 = 0; $aux2 < $percorrerAteP ; $aux2++) {
+                    if($data[$aux2] > $data [$aux2+1]) {
+                        $this->troca($aux2,$aux2+1);
                     }
-                    $array[$j] = $temp;
                 }
-                $x = round($x / 2.2);
             }
-            return $array;
-        }
-    
 
+        }
     }
 
     $a = array();
@@ -39,7 +30,8 @@
         array_push($a,$i);
         shuffle($a);
     }
-    $b = new ShellSortStrategy($a);
+    $b = new BubbleSortStrategy($a);
+    echo "\n";
     $b->tela();
     $b->ordenar();
     echo "\n";

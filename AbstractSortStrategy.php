@@ -1,7 +1,7 @@
 <?php
   include('IStrategy.php');
   abstract class AbstractSortStrategy implements IStrategy{
-    public $a = array();
+    public $a;
 
     function __construct($elementos){
       $this->a = $elementos;
@@ -18,9 +18,9 @@
     }
 
     public function troca($one,$two) {
-      $temp  = $this->a[$one];
-      $this->a[$one] = $this->a[$two];
-      $this->a[$two] = $temp;
+      $temp  = $this->getElementos()[$one];
+      $this->getElementos()[$one] = $this->getElementos()[$two];
+      $this->getElementos()[$two] = $temp;
     }
 
     public function tela() {
@@ -28,6 +28,9 @@
         echo $value . " ";
       }
     }
-
+    
+    public function cala() {
+      echo "calaa";
+    }
   }
 ?>
