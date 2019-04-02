@@ -1,46 +1,53 @@
-<?php
-    class ShellSortStrategy {
-        public $vetor = array();
-
-        function __construct()
-        {
-            for($z=0; $z<5; $z++)
-            {
-              $this->vetor[$z] = rand(0, 100);  	 
-            }
-        }
-      
-        public function printVetor()
-        {
-            return $this->vetor;
+<?php      
+    include('AbstractSortStrategy.php');
+    class ShellSortStrategy extends AbstractSortStrategy{
+        
+        function __construct($array)
+        {   
+            parent::__construct($array);
         }
 
-        function ordenar()
-        {
-            $x = round(count($this->vetor) / 2);
-            while($x > 0)
-            {
-                for($i = $x; $i < count($this->vetor); $i++)
-                {
-                    $temp = $this->vetor[$i];
-                    $j = $i;
-                    while($j >= $x && $this->vetor[$j-$x] > $temp)
-                    {
-                        $this->vetor[$j] = $this->vetor[$j - $x];
-                        $j -= $x;
+        public function ordenar()
+        {    
+            $data = $this->getElementos();
+            $len = sizeof($data);
+            $inner; 
+            $outer;
+            $temp;
+            $h = 1;
+
+            while ($h <= $len / 3)
+                $h = $h * 3 + 1;
+    
+            while ($h > 0) {
+    
+                for ($outer = $h; $outer < $len; $outer++) {
+                    $temp = $data[$outer];
+                    $inner = $outer;
+    
+                    while ($inner > $h - 1 && $data[$inner -$h] >= $temp) {
+                        $data[$inner] = $data[$inner -$h];
+                        $inner -= $h;
                     }
-                    $this->vetor[$j] = $temp;
+                    $data[$inner] = $temp;
                 }
-                $x = round($x / 2.2);
+                $h = ($h - 1) / 3;  
             }
-            return $this->vetor;
+            $this->setElementos($data);
         }
+    
     }
 
+    $a = array();
+    for($i = 0;$i <10;$i++){
+        array_push($a,$i);
+        shuffle($a);
+    }
+    $b = new ShellSortStrategy($a);
+    echo "\n";
+    $b->tela();
+    $b->ordenar();
+    echo "\n";
+    $b->tela();
 
-    $a = new ShellSortStrategy();
-    print_r($a->printVetor());
-    $a->ordenar();
-    print_r($a->printVetor());
-    
 ?>
