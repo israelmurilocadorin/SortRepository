@@ -2,13 +2,14 @@
 
 Métodos de ordenação da disciplina estrutura de dados
 
-BubbleSortStrategy  
+**BubbleSortStrategy  
 HeapSortStrategy  
 InsertionSortStrategy  
-JavaParallelSortStrategy  
-JavaSortStrategy  
 MergeSortStrategy  
 QuickSortStrategy  
 SelectionSortStrategy  
-ShellSortStrategy  
+ShellSortStrategy**  
 
+Alunos :
+* Dayan Orlando de Freitas
+* Israel Murilo Cadorin
