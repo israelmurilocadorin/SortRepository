@@ -40,9 +40,11 @@ function HeapSort(&$data, $count) {
         MaxHeapify($data, $heapSize, 0);
     }
 }
- 
-$array = array(20,43,65,88,11,33,56,74);
-HeapSort($array,8);
+$array = array();
+for($i = 0;$i < 10;$i++){
+    array_push($array,$i);
+    shuffle($array);
+}
+HeapSort($array,sizeof($array));
 print_r($array);
- 
 ?>
