@@ -1,50 +1,58 @@
 <?php
- 
-function MaxHeapify(&$data, $heapSize, $index) {
-    $left = ($index + 1) * 2 - 1;
-    $right = ($index + 1) * 2;
-    $largest = 0;
- 
-    if ($left < $heapSize && $data[$left] > $data[$index]) {
-        $largest = $left;
-    } else {
-        $largest = $index;
-    } 
+    include('AbstractSortStrategy.php');
+    class HeapSort extends AbstractSortStrategy{
+        
+        function __construct($array){
+            parent::__construct($array);
+        }
+        
+        public function ordenar(){
+            $array = $this->getElementos();
+            $n = sizeof($array);
+
+            for ($i = $n / 2 - 1; $i >= 0; $i--)
+               $this->heapify($array, $n, $i);
+
+            for ($i = $n - 1; $i >= 0; $i--)
+            {
+                $temp = $array[0];
+                $array[0] = $array[$i];
+                $array[$i] = $temp;
+
+                $this->heapify($array, $i, 0);
+            }
+
+        }
+
+        public function heapify($elementos, $n, $i){
+            $largest = $i;
+            $l = 2 * $i + 1;
+            $r = 2 * $i + 2;
     
-    if ($right < $heapSize && $data[$right] > $data[$largest]) {
-        $largest = $right;
-    }
+            if ($l < $n && $elementos[$l] > $elementos[$largest])
+                $largest = $l;
     
-    if ($largest != $index) {
-        $temp = $data[$index];
-        $data[$index] = $data[$largest];
-        $data[$largest] = $temp;
- 
-        MaxHeapify($data, $heapSize, $largest);
-    }
-}
- 
-function HeapSort(&$data, $count) {
-    $heapSize = $count;
- 
-    for ($p = ($heapSize - 1) / 2; $p >= 0; $p--) {
-        MaxHeapify($data, $heapSize, $p);
+            if ($r < $n && $elementos[$r] > $elementos[$largest])
+                $largest = $r;
+    
+            if ($largest != $i) {
+                $swap = $elementos[$i];
+                $elementos[$i] = $elementos[$largest];
+                $elementos[$largest] = $swap;
+                $this->heapify($elementos,$n, $largest);
+            }
+        }
     }
 
-    for ($i = $count - 1; $i > 0; $i--) {
-        $temp = $data[$i];
-        $data[$i] = $data[0];
-        $data[0] = $temp;
-  
-        $heapSize--;
-        MaxHeapify($data, $heapSize, 0);
+    $array = array();
+    for($i = 0;$i < 10;$i++){
+        array_push($array,$i);
+        shuffle($array);
     }
-}
-$array = array();
-for($i = 0;$i < 10;$i++){
-    array_push($array,$i);
-    shuffle($array);
-}
-HeapSort($array,sizeof($array));
-print_r($array);
+
+    $testa = new HeapSort($array);
+    $testa->tela();
+    $testa->ordenar();
+    echo "\n";
+    $testa->tela();
 ?>
